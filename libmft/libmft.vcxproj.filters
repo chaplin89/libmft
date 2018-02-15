@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Attributes.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRun.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Disk.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Fetch.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FixList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MFT.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Other.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Attributes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BootBlock.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataRun.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Disk.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Fetch.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Files.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MFT.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Other.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{a56d66a1-62c3-4f7a-9003-5323f32f30c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{48371428-a414-4a11-bb88-4c7a82f47c23}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
