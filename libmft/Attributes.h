@@ -92,6 +92,20 @@ typedef struct
 	unsigned long long compressed_size;
 } NonResidentAttribute;
 
+typedef struct
+{
+	unsigned char guid_object_id[16];
+	unsigned char guid_birth_volume_id[16];
+	unsigned char guid_birth_object_id[16];
+	unsigned char guid_domain_id[16];
+} ObjectIDAttribute;
+
+typedef struct
+{
+	// Unicode; Null-terminated
+	wchar_t volume_name[1];
+} VolumeNameAttribute;
+
 /// <summary> 
 /// </summary>
 /// <remarks> 
@@ -121,15 +135,15 @@ typedef struct
 	//Updated when filename changes
 	FILETIME creation_time;
 	// Updated when the file changes
-	FILETIME change_time;
+	FILETIME write_time;
 	// Updated when file is written
-	FILETIME last_write_time;
+	FILETIME mft_changed_time;
 	// Updated when file is accessed
-	FILETIME last_access_time;
+	FILETIME read_time;
 
 	unsigned long long allocated_size;
 	unsigned long long data_size;
-	unsigned long file_attributes;
+	unsigned long dos_file_permission;
 	unsigned long aligment_or_reserved;
 
 	// Lenght of the "name" field
@@ -147,16 +161,21 @@ typedef struct
 /// </remarks>
 typedef struct
 {
-	FILETIME creation_time;
-	FILETIME change_time;
-	FILETIME last_write_time;
-	FILETIME last_access_time;
-	unsigned long file_attributes;
-	unsigned long aligment_or_reserved_or_unknown[3];
+	long long creation_time;
+	long long write_time;
+	long long mft_changed_time;
+	long long read_time;
+
+	unsigned long dos_file_permission;
 
 	// NTFS 3.0+
-	unsigned long quota_id;
+	unsigned long max_version_number;
+	unsigned long version_number;
+
+	unsigned long class_id;
+	unsigned long owner_id;
 	unsigned long security_id;
+	unsigned long quota_id;
 	unsigned long long quota_charge;
 	long long usn;
 }  StandardInformation;

@@ -86,11 +86,11 @@ unsigned long FetchFileInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader* 
 			case kStandardInformation:
 				standard_info = (StandardInformation*)attribute;
 
-				file_info->access_time = standard_info->last_access_time;
+				file_info->read_time = standard_info->read_time;
+				file_info->write_time = standard_info->write_time;
 				file_info->creation_time = standard_info->creation_time;
-				file_info->write_time = standard_info->last_write_time;
-				file_info->change_time = standard_info->change_time;
-				file_info->file_attributes = standard_info->file_attributes;
+				file_info->mft_changed_time = standard_info->mft_changed_time;
+				file_info->dos_file_permission = standard_info->dos_file_permission;
 				break;
 			case kFileName:
 				resident_attribute = (ResidentAttribute *)attribute;

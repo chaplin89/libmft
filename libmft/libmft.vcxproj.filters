@@ -69,9 +69,6 @@
     <ClInclude Include="Path.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">

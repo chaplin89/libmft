@@ -48,12 +48,12 @@ typedef struct
 	bool has_data;
 	ULARGE_INTEGER file_size;
 
-	FILETIME creation_time;
-	FILETIME access_time;
-	FILETIME write_time;
-	FILETIME change_time;
+	long long creation_time;
+	long long read_time;
+	long long mft_changed_time;
+	long long write_time;
 	ULARGE_INTEGER allocated_file_size;
-	unsigned long file_attributes;
+	unsigned long dos_file_permission;
 } FileInfo;
 
 // NTFSRecordHeader

@@ -157,7 +157,6 @@
     <ClInclude Include="MFT.h" />
     <ClInclude Include="Other.h" />
     <ClInclude Include="Path.h" />
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Attributes.cpp" />
