@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include "DataRun.h"
 
 unsigned long DataRunLength(unsigned char * run)

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 
 #include "Attributes.h"
 #include "DataRun.h"

@@ -1,5 +1,5 @@
-#include "stdafx.h"
 #include "Heap.h"
+#include <Windows.h>
 
 HeapBlock* CreateHeap(unsigned long size)
 {
@@ -11,7 +11,6 @@ HeapBlock* CreateHeap(unsigned long size)
 	tmp->data = (unsigned char *)malloc(size);
 	if (tmp->data != nullptr)
 	{
-		//currentBlock = tmp;
 		tmp->end = tmp;
 		return tmp;
 	}

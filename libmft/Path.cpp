@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Path.h"
 #include "Attributes.h"
 

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include <memory>
 
 #include "Disk.h"

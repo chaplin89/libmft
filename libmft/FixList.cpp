@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include "FixList.h"
 
 LinkItem *fixlist = nullptr;
