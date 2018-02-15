@@ -147,32 +147,32 @@ unsigned long FetchFileInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader* 
 	}
 	else if (file->ntfs.type == 'DAAB')
 	{
-		file_info->parent_id.QuadPart = 5;
+		file_info->parent_id.QuadPart = SpecialDirectory::Root;
 		file_info->file_name = L"{BAAD}";
 	}
 	else if (file->ntfs.type == 'XDNI')
 	{
-		file_info->parent_id.QuadPart = 5;
+		file_info->parent_id.QuadPart = SpecialDirectory::Root;
 		file_info->file_name = L"{INDEX}";
 	}
 	else if (file->ntfs.type == 'ELOH')
 	{
-		file_info->parent_id.QuadPart = 5;
+		file_info->parent_id.QuadPart = SpecialDirectory::Root;
 		file_info->file_name = L"{HOLE}";
 	}
 	else if (file->ntfs.type == 'DKHC')
 	{
-		file_info->parent_id.QuadPart = 5;
+		file_info->parent_id.QuadPart = SpecialDirectory::Root;
 		file_info->file_name = L"{CHECKED}";
 	}
 	else if (file->ntfs.type == 0)
 	{
-		file_info->parent_id.QuadPart = 5;
+		file_info->parent_id.QuadPart = SpecialDirectory::Root;
 		file_info->file_name = L"{FREE}";
 	}
 	else
 	{
-		file_info->parent_id.QuadPart = 0;
+		file_info->parent_id.QuadPart = SpecialDirectory::MFT;
 		file_info->file_name = L"{NOT A FILE}";
 		return 0;
 	}
