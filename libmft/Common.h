@@ -9,23 +9,23 @@ enum class FetchOption
 
 enum SpecialDirectory
 {
-	MFT = 0,
-	MFTMirror = 1,
-	LogFile = 2,
-	Volume = 3,
-	AttributeDefinition = 4,
+	kMFT = 0,
+	kMFTMirror = 1,
+	kLogFile = 2,
+	kVolume = 3,
+	kAttributeDefinition = 4,
 	Root = 5,
-	Bitmap = 6,
-	Boot = 7,
-	BadClusters = 8,
-	Quota = 9,
-	Secure = 10,
-	UpperCase = 11,
-	Extend = 12,
+	kBitmap = 6,
+	kBoot = 7,
+	kBadClusters = 8,
+	kQuota = 9,
+	kSecure = 10,
+	kUpperCase = 11,
+	kExtend = 12,
 	// 12-23 unused/empty
 
 	// > 24, ordinary file/dir
-	OrinaryFileMark = 24
+	kOrinaryFileMark = 24
 };
 
 const static int kClusterPerRead = 1024;
