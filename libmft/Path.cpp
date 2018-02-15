@@ -80,7 +80,7 @@ wchar_t* GetCompletePath(std::shared_ptr<DiskHandle> disk, int id)
 		pt = current_id * disk->is_long;
 		current_id = ((SearchFileInfo *)(ptr + pt))->parent_id.LowPart;
 
-		if (current_id == SpecialDirectory::kMFT || current_id == SpecialDirectory::kRoot)
+		if (current_id == SpecialFiles::kMFT || current_id == SpecialFiles::kRoot)
 			break;
 	}
 

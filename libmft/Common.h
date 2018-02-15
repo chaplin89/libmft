@@ -7,15 +7,15 @@ enum class FetchOption
 	kSearchInfo
 };
 
-enum SpecialDirectory
+enum SpecialFiles
 {
 	kMFT = 0,
 	kMFTMirror = 1,
 	kLogFile = 2,
 	kVolume = 3,
 	kAttributeDefinition = 4,
-	Root = 5,
-	kBitmap = 6,
+	kRoot = 5,
+	kBitmapFile = 6,
 	kBoot = 7,
 	kBadClusters = 8,
 	kQuota = 9,
