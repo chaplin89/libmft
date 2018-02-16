@@ -44,7 +44,7 @@ int Disk::OpenDisk(const wchar_t* diskPath)
 	disk_->type = kNTFSDisk;
 	disk_->ntfs.bytes_per_cluster = disk_->ntfs.boot_sector.bytes_per_sector * disk_->ntfs.boot_sector.sectors_per_cluster;
 
-	if (disk_->ntfs.boot_sector.clusters_per_file_record < 0x80)
+	if (disk_->ntfs.boot_sector.clusters_per_file_record > 0)
 		disk_->ntfs.bytes_per_file_record = disk_->ntfs.boot_sector.clusters_per_file_record * disk_->ntfs.bytes_per_cluster;
 	else
 		disk_->ntfs.bytes_per_file_record = 1 << (0x100 - disk_->ntfs.boot_sector.clusters_per_file_record);

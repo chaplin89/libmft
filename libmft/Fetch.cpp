@@ -32,10 +32,10 @@ unsigned long FetchSearchInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader
 			name_attribute = (FileNameAttribute*)((unsigned char *)(attribute)+((ResidentAttribute *)(attribute))->value_offset);
 			if (name_attribute->name_type & kWIN32Name || name_attribute->name_type == 0)
 			{
-				name_attribute->name[name_attribute->name_length] = L'\0';
-				data->file_name = AllocAndCopyString(disk->heap_block, name_attribute->name, name_attribute->name_length);
-				data->file_name_lenght = name_attribute->name_length;
-				data->parent_id.QuadPart = name_attribute->directory_file_reference_number;
+				name_attribute->name[name_attribute->characters_count] = L'\0';
+				data->file_name = AllocAndCopyString(disk->heap_block, name_attribute->name, name_attribute->characters_count);
+				data->file_name_lenght = name_attribute->characters_count;
+				data->parent_id.QuadPart = name_attribute->parent_reference;
 				data->parent_id.HighPart &= 0x0000ffff;
 
 				if (file->base_file_record.LowPart != 0)
@@ -76,7 +76,7 @@ unsigned long FetchFileInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader* 
 			if (attribute->type < 0 || attribute->type>0x100)
 				break;
 
-			StandardInformation *standard_info = nullptr;
+			StandardInformationAttribute *standard_info = nullptr;
 			FileNameAttribute *name_attribute = nullptr;
 			ResidentAttribute *resident_attribute = nullptr;
 			NonResidentAttribute *non_resident_attribute = nullptr;
@@ -84,7 +84,7 @@ unsigned long FetchFileInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader* 
 			switch (attribute->type)
 			{
 			case kStandardInformation:
-				standard_info = (StandardInformation*)attribute;
+				standard_info = (StandardInformationAttribute*)attribute;
 
 				file_info->read_time = standard_info->read_time;
 				file_info->write_time = standard_info->write_time;
@@ -100,15 +100,15 @@ unsigned long FetchFileInfo(std::shared_ptr<DiskHandle> disk, FileRecordHeader* 
 
 				if (name_attribute->name_type & kWIN32Name || name_attribute->name_type == 0)
 				{
-					file_info->parent_id.QuadPart = name_attribute->directory_file_reference_number;
+					file_info->parent_id.QuadPart = name_attribute->parent_reference;
 					file_info->parent_id.HighPart &= 0x0000ffff;
 
-					auto temp_pointer = new wchar_t[name_attribute->name_length + 1];
-					memcpy((void *)temp_pointer, name_attribute->name, name_attribute->name_length * sizeof(wchar_t));
-					temp_pointer[name_attribute->name_length] = L'\0';
+					auto temp_pointer = new wchar_t[name_attribute->characters_count + 1];
+					memcpy((void *)temp_pointer, name_attribute->name, name_attribute->characters_count * sizeof(wchar_t));
+					temp_pointer[name_attribute->characters_count] = L'\0';
 					
 					file_info->file_name = temp_pointer;
-					file_info->file_name_lenght = name_attribute->name_length;
+					file_info->file_name_lenght = name_attribute->characters_count;
 					hasFilename = true;
 
 					if (file->base_file_record.LowPart != 0)

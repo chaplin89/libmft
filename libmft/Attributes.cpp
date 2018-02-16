@@ -1,5 +1,3 @@
-
-
 #include "Attributes.h"
 #include "DataRun.h"
 #include "Other.h"
@@ -70,44 +68,16 @@ void ReadExternalAttribute(std::shared_ptr<DiskHandle> disk, NonResidentAttribut
 	}
 }
 
-unsigned long AttributeLength(Attribute * attribute)
-{
-	if (attribute->non_resident)
-	{
-		auto non_resident_attribute = (NonResidentAttribute *)attribute;
-		return unsigned long(non_resident_attribute->data_size);
-	}
-	else
-	{
-		auto resident_attribute = (ResidentAttribute *)(attribute);
-		return resident_attribute->value_length;
-	}
-}
-
-unsigned long AttributeLengthAllocated(Attribute * attribute)
-{
-	if (attribute->non_resident)
-	{
-		auto non_resident_attribute = (NonResidentAttribute *)attribute;
-		return unsigned long(non_resident_attribute->allocated_size);
-	}
-	else
-	{
-		auto resident_attribute = (ResidentAttribute *)(attribute);
-		return resident_attribute->value_length;
-	}
-}
-
 void ReadAttribute(std::shared_ptr<DiskHandle> disk, Attribute * attribute, unsigned char* buffer)
 {
-	if (attribute->non_resident == FALSE)
-	{
-		ResidentAttribute *resident_attribute = (ResidentAttribute *)(attribute);
-		memcpy(buffer, (unsigned char *)(resident_attribute)+resident_attribute->value_offset, resident_attribute->value_length);
-	}
-	else
+	if (attribute->non_resident)
 	{
 		NonResidentAttribute *non_resident_attribute = (NonResidentAttribute *)(attribute);
 		ReadExternalAttribute(disk, non_resident_attribute, 0, unsigned long(non_resident_attribute->high_vcn) + 1, buffer);
+	}
+	else
+	{
+		ResidentAttribute *resident_attribute = (ResidentAttribute *)(attribute);
+		memcpy(buffer, (unsigned char *)(resident_attribute)+resident_attribute->value_offset, resident_attribute->value_length);
 	}
 }
